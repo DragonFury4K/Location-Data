@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">    
+    <title>My Location</title>
+</head>
+<body>
+    <script>
+        if('geolocation' in navigator) 
+        {
+            console.log("Geoloc");
+            navigator.geolocation.getCurrentPosition(position => 
+            {
+                const lat = position.coords.latitude;
+                document.getElementById('latitude').textContent = lat;
+                
+                const lng = position.coords.longitude;
+                document.getElementById('longitude').textContent = lng;
+                
+                const accuracy = position.coords.accuracy;
+                document.getElementById('accuracy').textContent = accuracy;
+                
+                const alt = position.coords.altitude;
+                document.getElementById('altitude').textContent = alt;
+                                
+                const alt_acc = position.coords.altitudeAccuracy;
+                document.getElementById('alt_accuracy').textContent = alt_acc;
+
+                const hdg = position.coords.heading;
+                document.getElementById('heading').textContent = hdg;
+
+                const spd = position.coords.speed;
+                document.getElementById('speed').textContent = spd;
+                
+                console.log(position);
+            });
+        }
+        else 
+        {
+            console.log("No geoloc");
+        }
+
+    </script>
+    <h1>GPS Data</h1>  
+    <p>
+        <table border="1" cellspacing="0">
+            <tr>
+                <th colspan="2" cellspacing="0">Position Data</th>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td><span id = "latitude"></span>&deg;<br/> </td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td><span id= "longitude"></span>&deg;<br/> </td>
+            </tr>
+            <tr>
+                <th>Accuracy</th>
+                <td><span id= "accuracy"></span><br/></td>
+            </tr>
+            <tr>
+                <th colspan="2" cellspacing="0">Altitude Data</th>
+            </tr>
+            <tr>
+                <th>Altitude</th>
+                <td><span id = "altitude"></span><br/> </td>
+            </tr>
+            <tr>
+                <th>Altitude Accuracy</th>
+                <td><span id= "alt_accuracy">&deg;</span><br/> </td>
+            </tr>
+            <tr>
+                <th colspan="2" cellspacing="0">Miscellaneous Data</th>
+            </tr>
+            <tr>
+                <th>Heading</th>
+                <td><span id= "heading"></span><br/> </td>
+            </tr>
+            <tr>
+                <th>Speed</th>
+                <td><span id= "speed"></span><br/> </td>
+            </tr>
+        </table>
+    </p>  
+</body>
+</html>
